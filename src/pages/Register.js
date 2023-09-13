@@ -5,8 +5,7 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { hideLoading, showLoading } from "../redux/alertsSlice";
-require("dotenv").config();
-const URL = process.env.BASE_URL;
+import { URL } from "../helper";
 
 function Register() {
   const dispatch = useDispatch();

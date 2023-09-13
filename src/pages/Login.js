@@ -5,8 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { hideLoading, showLoading } from "../redux/alertsSlice";
-require("dotenv").config();
-const URL = process.env.BASE_URL;
+import { URL } from "../helper";
 
 function Login() {
   const dispatch = useDispatch();

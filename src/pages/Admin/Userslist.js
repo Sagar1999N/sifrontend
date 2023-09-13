@@ -5,8 +5,7 @@ import { showLoading, hideLoading } from "../../redux/alertsSlice";
 import axios from "axios";
 import { Table } from "antd";
 import moment from "moment";
-require("dotenv").config();
-const URL = process.env.BASE_URL;
+import { URL } from "../../helper";
 
 function Userslist() {
   const [users, setUsers] = useState([]);

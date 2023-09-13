@@ -5,8 +5,7 @@ import { Col, Row } from "antd";
 import Doctor from "../components/Doctor";
 import { useDispatch, useSelector } from "react-redux";
 import { showLoading, hideLoading } from "../redux/alertsSlice";
-require("dotenv").config();
-const URL = process.env.BASE_URL;
+import { URL } from "../helper";
 
 function Home() {
   const [doctors, setDoctors] = useState([]);

@@ -8,8 +8,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import DoctorForm from "../../components/DoctorForm";
 import moment from "moment";
-require("dotenv").config();
-const URL = process.env.BASE_URL;
+import { URL } from "../../helper";
 
 function Profile() {
   const { user } = useSelector((state) => state.user);

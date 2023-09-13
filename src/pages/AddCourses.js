@@ -9,8 +9,7 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
 import "antd/dist/antd.css";
 import { format } from "date-fns";
-require("dotenv").config();
-const URL = process.env.BASE_URL;
+import { URL } from "../helper";
 
 function AddCourses() {
   const navigate = useNavigate();
