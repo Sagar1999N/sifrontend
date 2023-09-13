@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { hideLoading, showLoading } from "../redux/alertsSlice";
+require("dotenv").config();
+const URL = process.env.BASE_URL;
 
 function Login() {
   const dispatch = useDispatch();
@@ -12,7 +14,7 @@ function Login() {
   const onFinish = async (values) => {
     try {
       dispatch(showLoading());
-      const response = await axios.post("/api/user/login", values);
+      const response = await axios.post(`"${URL}"/api/user/login`, values);
       dispatch(hideLoading());
       if (response.data.success) {
         toast.success(response.data.message);
@@ -39,15 +41,16 @@ function Login() {
             <Input placeholder="Password" type="password" />
           </Form.Item>
 
-          
-          <Button className="primary-button my-2 full-width-button" htmlType="submit">
+          <Button
+            className="primary-button my-2 full-width-button"
+            htmlType="submit"
+          >
             LOGIN
           </Button>
 
           <Link to="/register" className="anchor mt-2">
             CLICK HERE TO REGISTER
           </Link>
-         
         </Form>
       </div>
     </div>

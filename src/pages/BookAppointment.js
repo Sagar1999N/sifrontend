@@ -9,6 +9,8 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
 import "antd/dist/antd.css";
 import { format } from "date-fns";
+require("dotenv").config();
+const URL = process.env.BASE_URL;
 
 function BookAppointment() {
   const navigate = useNavigate();
@@ -23,7 +25,7 @@ function BookAppointment() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/user/schedule-lecture",
+        `'${URL}'/api/user/schedule-lecture`,
         {
           name: values.name,
           instructor: values.instructor,

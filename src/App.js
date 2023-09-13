@@ -17,6 +17,7 @@ import Appointments from "./pages/Appointments";
 import DoctorAppointments from "./pages/Doctor/DoctorAppointments";
 import Courses from "./pages/Doctor/Courses";
 import AddCourses from "./pages/AddCourses";
+require("dotenv").config();
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);

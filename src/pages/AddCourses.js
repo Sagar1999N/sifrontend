@@ -9,6 +9,8 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
 import "antd/dist/antd.css";
 import { format } from "date-fns";
+require("dotenv").config();
+const URL = process.env.BASE_URL;
 
 function AddCourses() {
   const navigate = useNavigate();
@@ -21,7 +23,7 @@ function AddCourses() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/user/add-course",
+        `"${URL}"/api/user/add-course"`,
         {
           name: values.name,
           level: values.level,

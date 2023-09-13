@@ -8,6 +8,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import DoctorForm from "../components/DoctorForm";
 import moment from "moment";
+require("dotenv").config();
+const URL = process.env.BASE_URL;
 
 function ApplyDoctor() {
   const dispatch = useDispatch();
@@ -17,7 +19,7 @@ function ApplyDoctor() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/user/apply-doctor-account",
+        `"${URL}"/api/user/apply-doctor-account`,
         {
           ...values,
           userId: user._id,

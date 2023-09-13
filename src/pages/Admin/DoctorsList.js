@@ -6,6 +6,8 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import { Table } from "antd";
 import moment from "moment";
+require("dotenv").config();
+const URL = process.env.BASE_URL;
 
 function DoctorsList() {
   const [doctors, setDoctors] = useState([]);
@@ -13,11 +15,14 @@ function DoctorsList() {
   const getDoctorsData = async () => {
     try {
       dispatch(showLoading());
-      const resposne = await axios.get("/api/admin/get-all-instructors", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const resposne = await axios.get(
+        `"${URL}"/api/admin/get-all-instructors`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       dispatch(hideLoading());
       if (resposne.data.success) {
         setDoctors(resposne.data.data);

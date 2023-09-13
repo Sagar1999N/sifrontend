@@ -5,6 +5,9 @@ import { Col, Row } from "antd";
 import Doctor from "../components/Doctor";
 import { useDispatch, useSelector } from "react-redux";
 import { showLoading, hideLoading } from "../redux/alertsSlice";
+require("dotenv").config();
+const URL = process.env.BASE_URL;
+
 function Home() {
   const [doctors, setDoctors] = useState([]);
   const { user } = useSelector((state) => state.user);
@@ -13,18 +16,21 @@ function Home() {
     try {
       dispatch(showLoading());
       if (user.isAdmin) {
-        const response = await axios.get("/api/admin/get-all-lectures", {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-        });
+        const response = await axios.get(
+          `"${URL}"/api/admin/get-all-lectures`,
+          {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+          }
+        );
         dispatch(hideLoading());
         if (response.data.success) {
           setDoctors(response.data.data);
         }
       } else {
         const response = await axios.get(
-          `/api/user/get-lectures-by-instructor-id/'${user._id}'`,
+          `"${URL}"/api/user/get-lectures-by-instructor-id/'${user._id}'`,
           {
             headers: {
               Authorization: "Bearer " + localStorage.getItem("token"),

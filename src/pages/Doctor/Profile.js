@@ -8,6 +8,8 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import DoctorForm from "../../components/DoctorForm";
 import moment from "moment";
+require("dotenv").config();
+const URL = process.env.BASE_URL;
 
 function Profile() {
   const { user } = useSelector((state) => state.user);
@@ -19,7 +21,7 @@ function Profile() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/doctor/update-doctor-profile",
+        `"${URL}"/api/doctor/update-doctor-profile`,
         {
           ...values,
           userId: user._id,
@@ -51,7 +53,7 @@ function Profile() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/doctor/get-doctor-info-by-user-id",
+        `"${URL}"/api/doctor/get-doctor-info-by-user-id`,
         {
           userId: params.userId,
         },

@@ -6,6 +6,8 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import { Table } from "antd";
 import moment from "moment";
+require("dotenv").config();
+const URL = process.env.BASE_URL;
 
 function Courses() {
   const [appointments, setAppointments] = useState([]);
@@ -13,7 +15,7 @@ function Courses() {
   const getAppointmentsData = async () => {
     try {
       dispatch(showLoading());
-      const resposne = await axios.get("/api/admin/get-all-courses", {
+      const resposne = await axios.get(`"${URL}"/api/admin/get-all-courses`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { setUser } from "../redux/userSlice";
 import { showLoading, hideLoading } from "../redux/alertsSlice";
+require("dotenv").config();
+const URL = process.env.BASE_URL;
 
 function ProtectedRoute(props) {
   const { user } = useSelector((state) => state.user);
@@ -14,7 +16,7 @@ function ProtectedRoute(props) {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/user/get-user-info-by-id",
+        `"${URL}"/api/user/get-user-info-by-id`,
         { token: localStorage.getItem("token") },
         {
           headers: {
